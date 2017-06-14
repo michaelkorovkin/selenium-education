@@ -33,42 +33,7 @@ public class Task05 {
         wait = new WebDriverWait(driver, 10);
         driver.get("http://localhost/litecart/en/");
     }
-    @Test
-    public void firstTest() {
-        List<WebElement> goods;
-        Iterator<WebElement> iter;
-        List<WebElement> stickers;
-        WebElement good;
-        try {
-            goods = driver.findElements(By.cssSelector("div#box-most-popular>div.content li.product.column.shadow.hover-light"));
-            System.out.println("Популярных товаров: "+goods.size());
-            iter = goods.iterator();
-            while (iter.hasNext()) {
-                good = iter.next();
-                stickers = good.findElements(By.cssSelector("div.sticker"));
-                assertTrue(stickers.size() == 1);
-            }
-            goods = driver.findElements(By.cssSelector("div#box-campaigns>div.content li.product.column.shadow.hover-light"));
-            System.out.println("Компанейских товаров: "+goods.size());
-            iter = goods.iterator();
-            while (iter.hasNext()) {
-                good = iter.next();
-                stickers = good.findElements(By.cssSelector("div.sticker"));
-                assertTrue(stickers.size() == 1);
-            }
 
-            goods = driver.findElements(By.cssSelector("div#box-latest-products>div.content li.product.column.shadow.hover-light"));
-            System.out.println("Последний выпуск: "+goods.size());
-            iter = goods.iterator();
-            while (iter.hasNext()) {
-                good = iter.next();
-                stickers = good.findElements(By.cssSelector("div.sticker"));
-                assertTrue(stickers.size() == 1);
-            }
-        } catch (Exception e) {
-            System.out.println("Ошибка: "+e.getMessage());
-        }
-    }
 
     @After
     public void stop() {
